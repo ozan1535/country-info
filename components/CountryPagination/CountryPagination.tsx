@@ -2,7 +2,7 @@ import Pagination from "@mui/material/Pagination";
 import { useRouter } from "next/router";
 import { ICountryData } from "../../layouts/LayoutDefault/LayoutDefault.types";
 import { ICountryPagination } from "./CountryPagination.types";
-import styles from "./CountryPagination.module.css";
+import styles from "./countryPagination.module.css";
 
 export function CountryPagination({
   setNewData,
