@@ -40,8 +40,8 @@ export function CountryComments({
           </Grid>
         </Grid>
       </div>
-      {comments?.map((comment) => (
-        <Paper style={{ padding: "1rem", marginTop: "1rem" }} key={comment.id}>
+      {comments?.map((comment, index) => (
+        <Paper style={{ padding: "1rem", marginTop: "1rem" }} key={index}>
           <Grid container wrap="nowrap" spacing={2}>
             <Grid item>
               <Avatar alt="Remy Sharp" src={comment.photo || ""} />
