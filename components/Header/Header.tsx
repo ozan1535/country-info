@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Link from "next/link";
 import { useGlobalContext } from "../../layouts/LayoutDefault/context";
 import { CountrySearch } from "../CountrySearch/CountrySearch";
+import { Settings } from "./Settings/Settings";
 
 export function Header() {
   const router = useRouter();
@@ -31,7 +32,7 @@ export function Header() {
         >
           <SearchIcon />
         </IconButton>
-        <Link href="/">Home</Link>
+        <Settings />
       </Toolbar>
       {isSearchDialogOpen && <CountrySearch />}
     </AppBar>

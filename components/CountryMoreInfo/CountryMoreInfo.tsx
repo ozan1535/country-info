@@ -40,7 +40,7 @@ export default function CountryMoreInfo({ countryName }: ICountryMoreInfo) {
 
   return (
     <div>
-      {open ? (
+      {open && (
         <CountryDialog
           open={open}
           handleClose={handleClose}
@@ -57,16 +57,16 @@ export default function CountryMoreInfo({ countryName }: ICountryMoreInfo) {
               }}
             />
           }
+          maxWidth={"xl"}
         />
-      ) : (
-        <Button
-          variant="contained"
-          sx={{ margin: "1rem" }}
-          onClick={handleClickOpen}
-        >
-          Show more information about&nbsp;<b>{countryName}</b>
-        </Button>
       )}
+      <Button
+        variant="contained"
+        sx={{ margin: "1rem" }}
+        onClick={handleClickOpen}
+      >
+        Show more information about&nbsp;<b>{countryName}</b>
+      </Button>
     </div>
   );
 }

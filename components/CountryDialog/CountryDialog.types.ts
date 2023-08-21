@@ -1,3 +1,4 @@
+import { Breakpoint } from "@mui/material";
 import { ReactNode } from "react";
 
 export interface ICountryDialog {
@@ -5,6 +6,7 @@ export interface ICountryDialog {
   handleClose: () => void;
   header: JSX.Element;
   content: JSX.Element;
+  maxWidth: Breakpoint;
 }
 
 export interface DialogTitleProps {

@@ -8,7 +8,8 @@ import { ICountryData } from "../../layouts/LayoutDefault/LayoutDefault.types";
 import { countryDialog__Paper } from "./CountrySearch.styles";
 
 export function CountrySearch() {
-  const { isSearchDialogOpen, setIsSearchDialogOpen } = useGlobalContext();
+  const { isSearchDialogOpen, setIsSearchDialogOpen, currentUser } =
+    useGlobalContext();
   const [searchValue, setSearchValue] = useState("");
   const [isDataLoading, setIsDataLoading] = useState(false);
   const [allCountries, setAllCountries] = useState<ICountryData[]>();
@@ -64,6 +65,7 @@ export function CountrySearch() {
           isDataLoading={isDataLoading}
         />
       }
+      maxWidth={"xl"}
     />
   );
 }

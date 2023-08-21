@@ -1,14 +1,64 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Rating, TextField, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import {
+  arrayUnion,
+  doc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { CountryComments } from "../components/CountryComments/CountryComments";
+import { CountryDialog } from "../components/CountryDialog/CountryDialog";
 import { CountryImage } from "../components/CountryImage/CountryImage";
 import CountryMoreInfo from "../components/CountryMoreInfo/CountryMoreInfo";
 import { CountryTable } from "../components/CountryTable/CountryTable";
 import { getCountryInfo } from "../helpers";
+import { useGlobalContext } from "../layouts/LayoutDefault/context";
 import { getLayoutDefault } from "../layouts/LayoutDefault/LayoutDefault";
 import { ICountryData } from "../layouts/LayoutDefault/LayoutDefault.types";
+import { firebaseDatabase } from "../services/firebase";
 
 export default function CountryInformation({ data }: { data: ICountryData }) {
+  const { currentUser } = useGlobalContext();
+
   const countryInfo = getCountryInfo(data);
+  const [value, setValue] = useState("");
+  const [hasNewComment, setHasNewComment] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const router = useRouter();
+
+  const handleClick = async () => {
+    const randomId = self.crypto.randomUUID();
+    setHasNewComment(true);
+
+    const user = doc(
+      firebaseDatabase,
+      `users/${currentUser?.uid}/comments/${randomId}`
+    );
+    const document = doc(
+      firebaseDatabase,
+      `countries/${router.query.id}/comments/${randomId}`
+    );
+
+    if (value.length > 0) {
+      await setDoc(document, {
+        uid: currentUser?.uid,
+        name: currentUser?.displayName,
+        photo: currentUser?.photoURL,
+        comment: value,
+        timestamp: serverTimestamp(),
+      });
+      await setDoc(user, {
+        uid: currentUser?.uid,
+        comment: value,
+        timestamp: serverTimestamp(),
+      });
+    }
+    setValue("");
+  };
 
   return (
     <div>
@@ -44,6 +94,37 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
       </Grid>
 
       <CountryMoreInfo countryName={countryInfo.names[0].name as string} />
+      <CountryDialog
+        open={openDialog}
+        handleClose={() => setOpenDialog(false)}
+        header={<div>Error</div>}
+        content={<div>You have to Login first</div>}
+        maxWidth={"sm"}
+      />
+      <Box sx={{ m: 2 }}>
+        <CountryComments
+          hasNewComment={hasNewComment}
+          setHasNewComment={setHasNewComment}
+        />
+        <TextField
+          id="outlined-multiline-flexible"
+          label="Share your experience"
+          multiline
+          fullWidth
+          minRows={4}
+          sx={{ mt: "1rem" }}
+          value={value}
+          onChange={(a) => setValue((a.target as HTMLInputElement).value)}
+        />
+        <Button
+          sx={{ my: 1 }}
+          variant="contained"
+          onClick={currentUser ? handleClick : () => setOpenDialog(true)}
+          disabled={value.length < 5}
+        >
+          Share
+        </Button>
+      </Box>
     </div>
   );
 }

@@ -1,0 +1,21 @@
+.CountryRatings {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.CountryRatings__Ratings {
+  display: flex;
+  align-items: center;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.CountryRatings__UserRating {
+  margin-left: 1rem;
+}
+
+@media (max-width: 899px) {
+  .CountryRatings {
+    justify-content: flex-start;
+  }
+}

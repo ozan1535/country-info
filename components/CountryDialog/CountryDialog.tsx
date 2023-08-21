@@ -8,6 +8,7 @@ export function CountryDialog({
   handleClose,
   header,
   content,
+  maxWidth,
 }: ICountryDialog) {
   if (!header || !content) {
     return null;
@@ -16,7 +17,7 @@ export function CountryDialog({
   return (
     <Dialog
       onClose={handleClose}
-      maxWidth={"xl"}
+      maxWidth={maxWidth}
       fullWidth={true}
       aria-labelledby="customized-dialog-title"
       open={open}
