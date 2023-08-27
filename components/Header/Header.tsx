@@ -21,7 +21,7 @@ export function Header() {
     <AppBar position="sticky">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link href="/">Country Information</Link>
+          <Link href="/">Country Insight</Link>
         </Typography>
         <IconButton
           size="large"
