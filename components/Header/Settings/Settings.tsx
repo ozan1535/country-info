@@ -8,6 +8,7 @@ import {
   MenuItem,
   Tooltip,
 } from "@mui/material";
+import Link from "next/link";
 import { useState } from "react";
 import Logout from "@mui/icons-material/Logout";
 import Login from "@mui/icons-material/Login";
@@ -17,7 +18,7 @@ import { useGlobalContext } from "../../../layouts/LayoutDefault/context";
 import { SettingsBox, SettingsMenuPaperProps } from "./Settings.helper";
 
 export function Settings() {
-  const { googleSignIn, googleSignOut, currentUser } = useGlobalContext();
+  const { googleSignOut, currentUser } = useGlobalContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -26,13 +27,10 @@ export function Settings() {
   };
   const handleClose = (type: string | null = null) => {
     setAnchorEl(null);
-    if (type) {
-      if (type === "login") {
-        googleSignIn();
-      } else if (type === "logout") {
-        googleSignOut();
-      }
-    }
+  };
+
+  const logOut = () => {
+    googleSignOut();
   };
 
   return (
@@ -81,16 +79,23 @@ export function Settings() {
         )}
         {currentUser && <Divider />}
 
-        <MenuItem onClick={() => handleClose(currentUser ? "logout" : "login")}>
-          <ListItemIcon>
-            {currentUser ? (
+        {currentUser ? (
+          <MenuItem onClick={logOut}>
+            <ListItemIcon>
               <Logout fontSize="medium" />
-            ) : (
-              <Login fontSize="medium" />
-            )}
-          </ListItemIcon>
-          {currentUser ? "Logout" : "Login"}
-        </MenuItem>
+            </ListItemIcon>
+            Logout
+          </MenuItem>
+        ) : (
+          <Link href={"/login"}>
+            <MenuItem>
+              <ListItemIcon>
+                <Login fontSize="medium" />
+              </ListItemIcon>
+              Log in
+            </MenuItem>
+          </Link>
+        )}
       </Menu>
     </div>
   );
