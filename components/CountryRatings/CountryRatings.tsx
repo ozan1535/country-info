@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useGlobalContext } from "../../layouts/LayoutDefault/context";
 import { firebaseDatabase } from "../../services/firebase";
+import { LoginMessage } from "../LoginMessage/LoginMessage";
 import { CountryDialog } from "./../../components/CountryDialog/CountryDialog";
 import { handleClick } from "./CountryRatings.helpers";
 import styles from "./CountryRatings.module.css";
@@ -75,8 +76,8 @@ export function CountryRatings() {
       <CountryDialog
         open={openDialog}
         handleClose={() => setOpenDialog(false)}
-        header={<div>Error</div>}
-        content={<div>You have to Login first</div>}
+        header={<div>Log in Required</div>}
+        content={<LoginMessage setOpenDialog={setOpenDialog} />}
         maxWidth={"sm"}
       />
       <div style={{ marginRight: "1rem" }}>
