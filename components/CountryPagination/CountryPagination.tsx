@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 import { useRouter } from "next/router";
 import { ICountryPagination } from "./CountryPagination.types";
-import styles from "./countryPagination.module.css";
 import { handlePaginationChange } from "./CountryPagination.helpers";
+import styles from "./countryPagination.module.css";
 
 export function CountryPagination({
   setNewData,
