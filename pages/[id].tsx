@@ -10,6 +10,7 @@ import { CountryImage } from "../components/CountryImage/CountryImage";
 import CountryMoreInfo from "../components/CountryMoreInfo/CountryMoreInfo";
 import { CountryTable } from "../components/CountryTable/CountryTable";
 import { LoginMessage } from "../components/LoginMessage/LoginMessage";
+import { PageHead } from "../components/PageHead/PageHead";
 import { getCountryInfo } from "../helpers";
 import { useGlobalContext } from "../layouts/LayoutDefault/context";
 import { getLayoutDefault } from "../layouts/LayoutDefault/LayoutDefault";
@@ -57,6 +58,11 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
 
   return (
     <div>
+      <PageHead
+        title={`Country Insight - ${data.name.common}`}
+        content={`Country Insight for ${data.name.common}`}
+      />
+
       <Typography
         variant="h2"
         align="center"

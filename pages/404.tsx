@@ -1,9 +1,12 @@
+import { PageHead } from "../components/PageHead/PageHead";
 import { getLayoutDefault } from "../layouts/LayoutDefault/LayoutDefault";
 import styles from "./../styles/404.module.css";
 
 export default function NotFound() {
   return (
     <div>
+      <PageHead title={"Country Insight - 404"} content={"Page not found"} />
+
       <div id="background"></div>
       <div className={styles["top"]}>
         <h1 className={styles["h1"]}>404</h1>
