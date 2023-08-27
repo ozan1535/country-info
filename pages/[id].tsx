@@ -1,12 +1,6 @@
-import { Box, Grid, Rating, TextField, Typography } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import {
-  arrayUnion,
-  doc,
-  serverTimestamp,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -15,6 +9,7 @@ import { CountryDialog } from "../components/CountryDialog/CountryDialog";
 import { CountryImage } from "../components/CountryImage/CountryImage";
 import CountryMoreInfo from "../components/CountryMoreInfo/CountryMoreInfo";
 import { CountryTable } from "../components/CountryTable/CountryTable";
+import { LoginMessage } from "../components/LoginMessage/LoginMessage";
 import { getCountryInfo } from "../helpers";
 import { useGlobalContext } from "../layouts/LayoutDefault/context";
 import { getLayoutDefault } from "../layouts/LayoutDefault/LayoutDefault";
@@ -97,8 +92,8 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
       <CountryDialog
         open={openDialog}
         handleClose={() => setOpenDialog(false)}
-        header={<div>Error</div>}
-        content={<div>You have to Login first</div>}
+        header={<div>Log in Required</div>}
+        content={<LoginMessage setOpenDialog={setOpenDialog} />}
         maxWidth={"sm"}
       />
       <Box sx={{ m: 2 }}>
@@ -136,6 +131,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://restcountries.com/v3.1/alpha/${context.query.id}`
   );
   const data = await res.json();
+  console.log(data, "xddxdxxdx");
+
+  if (data.status === 404 || data.status === 400) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/404",
+      },
+      props: {},
+    };
+  }
 
   return { props: { data: data[0] } };
 };
