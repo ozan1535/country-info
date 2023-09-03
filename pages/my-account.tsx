@@ -91,7 +91,6 @@ export default function MyAccount() {
       }
     );
   };
-  console.log(userComments);
 
   return (
     <div>

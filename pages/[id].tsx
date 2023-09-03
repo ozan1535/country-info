@@ -139,7 +139,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://restcountries.com/v3.1/alpha/${context.query.id}`
   );
   const data = await res.json();
-  console.log(data, "xddxdxxdx");
 
   if (data.status === 404 || data.status === 400) {
     return {
