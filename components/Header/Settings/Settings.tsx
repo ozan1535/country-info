@@ -70,12 +70,14 @@ export function Settings() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         {currentUser && (
-          <MenuItem onClick={() => handleClose()}>
-            <ListItemIcon>
-              <Person fontSize="medium" />
-            </ListItemIcon>
-            My account
-          </MenuItem>
+          <Link href={"/my-account"}>
+            <MenuItem onClick={() => handleClose()}>
+              <ListItemIcon>
+                <Person fontSize="medium" />
+              </ListItemIcon>
+              My account
+            </MenuItem>
+          </Link>
         )}
         {currentUser && <Divider />}
 
