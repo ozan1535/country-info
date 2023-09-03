@@ -18,7 +18,7 @@ export function CountryComments({
     getDocument(router, setComments);
     setHasNewComment(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasNewComment]);
+  }, [hasNewComment, comments]);
 
   return (
     <>
@@ -50,7 +50,15 @@ export function CountryComments({
               <h4 style={{ margin: 0, textAlign: "left" }}>{comment.name}</h4>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <p style={{ textAlign: "justify" }}>{comment.comment}</p>
-                <p style={{ color: "grey" }}>{comment.date}</p>
+                {comment.timestamp?.seconds &&
+                  comment.timestamp?.nanoseconds && (
+                    <p style={{ color: "grey" }}>
+                      {new Date(
+                        comment.timestamp.seconds * 1000 +
+                          comment.timestamp.nanoseconds / 1000000
+                      ).toLocaleString()}
+                    </p>
+                  )}
               </div>
             </Grid>
           </Grid>
