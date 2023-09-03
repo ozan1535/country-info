@@ -15,7 +15,7 @@ export const LoginMessage = ({
       community and enjoy a personalized experience.
       <br />
       <Button
-        sx={{ my: 1 }}
+        sx={{ my: 1, float: "right" }}
         variant="contained"
         onClick={() => {
           googleSignIn();
