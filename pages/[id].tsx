@@ -50,7 +50,9 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
       await setDoc(user, {
         uid: currentUser?.uid,
         comment: value,
+        country: router.query.id,
         timestamp: serverTimestamp(),
+        countryName: data?.name?.common,
       });
     }
     setValue("");
