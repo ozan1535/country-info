@@ -140,15 +140,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   );
   const data = await res.json();
 
-  if (data.status === 404 || data.status === 400) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: "/404",
-      },
-      props: {},
-    };
-  }
+  // if (data.status === 404 || data.status === 400) {
+  //   return {
+  //     redirect: {
+  //       permanent: false,
+  //       destination: "/404",
+  //     },
+  //     props: {},
+  //   };
+  // }
 
   return { props: { data: data[0] } };
 };
