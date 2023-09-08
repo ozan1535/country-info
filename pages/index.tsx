@@ -13,7 +13,9 @@ const Home = ({ data }: { data: ICountryData[] }): JSX.Element => {
   return (
     <div>
       <PageHead title={`Country Insight`} content={"Home page"} />
-
+      <h3 style={{ textAlign: "center", color: "#556cd6" }}>
+        Explore countries and share your experience
+      </h3>
       <CountryCard data={newData || data} isDataLoading={isDataLoading} />
       <CountryPagination
         setNewData={setNewData}
