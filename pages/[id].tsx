@@ -80,7 +80,10 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
       >
         {countryInfo.names[0].name}
       </Typography>
-      <CountryImage countryName={countryInfo.names[0].name as string} />
+      <CountryImage
+        countryName={countryInfo.names[0].name as string}
+        countryFlag={data.flags.svg}
+      />
 
       <Grid
         container

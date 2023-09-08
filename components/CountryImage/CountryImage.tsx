@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { CountryImageItem } from "./CountryImageItem";
 import { ICountryImage, IImage } from "./CountryImage.types";
 
-export function CountryImage({ countryName }: ICountryImage) {
+export function CountryImage({ countryName, countryFlag }: ICountryImage) {
   const router = useRouter();
 
   const [images, setImages] = useState<IImage[]>();
@@ -16,7 +16,7 @@ export function CountryImage({ countryName }: ICountryImage) {
 
     const data = await request.json();
 
-    setImages(data.hits);
+    setImages([{ largeImageURL: countryFlag }, ...data.hits]);
   }
   useEffect(() => {
     getImages();

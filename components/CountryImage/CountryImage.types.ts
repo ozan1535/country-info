@@ -25,4 +25,5 @@ export interface IImage {
 
 export interface ICountryImage {
   countryName: string;
+  countryFlag: string;
 }
