@@ -58,7 +58,7 @@ export function CountryCard({
             }}
           >
             <Link href={`/${singleData.cca3}`}>
-              <Card>
+              <Card sx={{ border: "1px solid #dcdcdc" }}>
                 <CardHeader
                   title={singleData.name.common}
                   subheader={`(${singleData.name.official})`}
