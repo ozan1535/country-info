@@ -10,7 +10,7 @@ export function CountryDialog({
   content,
   maxWidth,
 }: ICountryDialog) {
-  if (!header || !content) {
+  if (!content) {
     return null;
   }
 
@@ -21,10 +21,17 @@ export function CountryDialog({
       fullWidth={true}
       aria-labelledby="customized-dialog-title"
       open={open}
+      PaperProps={{
+        sx: {
+          minHeight: 200,
+        },
+      }}
     >
-      <CountryDialogHeader id="customized-dialog-title" onClose={handleClose}>
-        {header}
-      </CountryDialogHeader>
+      {header && (
+        <CountryDialogHeader id="customized-dialog-title" onClose={handleClose}>
+          {header}
+        </CountryDialogHeader>
+      )}
       <DialogContent dividers>{content}</DialogContent>
     </Dialog>
   );
