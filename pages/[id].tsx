@@ -68,10 +68,17 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
       <Typography
         variant="h2"
         align="center"
-        marginBottom={5}
-        sx={{ fontWeight: "bold" }}
+        marginBottom={2}
+        sx={{
+          fontWeight: "bold",
+          marginTop: "1rem",
+          fontSize: {
+            md: 40,
+            xs: 30,
+          },
+        }}
       >
-        {countryInfo.names[0].name} {data.flag}
+        {countryInfo.names[0].name}
       </Typography>
       <CountryImage countryName={countryInfo.names[0].name as string} />
 
@@ -89,7 +96,7 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
           data={countryInfo.geography}
           countryName={countryInfo.names[0].name as string}
         />
-        <Grid item direction={"column"} xs={18} sm={9} md={6} lg={5} xl={5}>
+        <Grid item direction={"column"} xs={20} sm={9} md={6} lg={5} xl={5}>
           <CountryTable name="Languages" data={countryInfo.languages} />
           <CountryTable name="Currency" data={countryInfo.currency} />
         </Grid>
@@ -112,6 +119,7 @@ export default function CountryInformation({ data }: { data: ICountryData }) {
         <TextField
           id="outlined-multiline-flexible"
           label="Share your experience"
+          helperText="*Please enter at least 5 characters"
           multiline
           fullWidth
           minRows={4}
