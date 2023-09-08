@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 export interface ICountryDialog {
   open: boolean;
   handleClose: () => void;
-  header: JSX.Element;
+  header: JSX.Element | null;
   content: JSX.Element;
   maxWidth: Breakpoint;
 }
