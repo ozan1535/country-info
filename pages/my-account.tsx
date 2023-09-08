@@ -92,15 +92,21 @@ export default function MyAccount() {
   };
   if (!currentUser) {
     return (
-      <Button
-        sx={{ m: 1 }}
-        variant="contained"
-        onClick={() => {
-          window.location.replace("/login");
-        }}
-      >
-        LOGIN
-      </Button>
+      <>
+        <PageHead
+          title={"Country Insight - My Account"}
+          content={"My Account"}
+        />
+        <Button
+          sx={{ m: 1 }}
+          variant="contained"
+          onClick={() => {
+            window.location.replace("/login");
+          }}
+        >
+          LOGIN
+        </Button>
+      </>
     );
   }
 
