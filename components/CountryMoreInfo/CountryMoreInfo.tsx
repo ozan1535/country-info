@@ -65,7 +65,7 @@ export default function CountryMoreInfo({ countryName }: ICountryMoreInfo) {
         sx={{ margin: "1rem" }}
         onClick={handleClickOpen}
       >
-        Show more information about&nbsp;<b>{countryName}</b>
+        Show more information
       </Button>
     </div>
   );
