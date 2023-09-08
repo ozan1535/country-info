@@ -41,26 +41,26 @@ export function CountryCard({
       {data.map((singleData) => (
         <Grid
           item
-          xs={11}
-          sm={10}
-          md={6}
-          lg={5}
-          xl={4}
+          xs={19}
+          sm={8}
+          md={5.5}
+          lg={6}
+          xl={3.5}
+          columnGap={20}
           key={singleData.cca3}
           justifyContent={"center"}
-          marginTop={"1rem"}
+          margin={"1rem"}
           maxWidth={"100%"}
         >
           <CardActionArea
             sx={{
-              maxWidth: "250px",
               margin: "auto",
             }}
           >
             <Link href={`/${singleData.cca3}`}>
               <Card>
                 <CardHeader
-                  title={`${singleData.name.common} ${singleData.flag}`}
+                  title={singleData.name.common}
                   subheader={`(${singleData.name.official})`}
                   sx={{ backgroundColor: "#f5f5f5" }}
                 />
