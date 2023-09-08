@@ -45,6 +45,7 @@ export function CountrySearch() {
           sx={{ width: "auto", height: "auto" }}
           onChange={(event: any, option: any) => {
             window.location.href = option.link;
+            setIsSearchDialogOpen(false);
           }}
           renderInput={(params) => <TextField {...params} label="Search" />}
           fullWidth
