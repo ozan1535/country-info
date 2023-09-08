@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import {
   collection,
@@ -91,6 +90,19 @@ export default function MyAccount() {
       }
     );
   };
+  if (!currentUser) {
+    return (
+      <Button
+        sx={{ m: 1 }}
+        variant="contained"
+        onClick={() => {
+          window.location.replace("/login");
+        }}
+      >
+        LOGIN
+      </Button>
+    );
+  }
 
   return (
     <div>

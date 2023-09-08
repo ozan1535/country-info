@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Logout from "@mui/icons-material/Logout";
 import Login from "@mui/icons-material/Login";
+import Info from "@mui/icons-material/Info";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Person from "@mui/icons-material/Person";
 import { useGlobalContext } from "../../../layouts/LayoutDefault/context";
@@ -69,6 +70,15 @@ export function Settings() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        <Link href={"/about"}>
+          <MenuItem onClick={() => handleClose()}>
+            <ListItemIcon>
+              <Info fontSize="medium" />
+            </ListItemIcon>
+            About
+          </MenuItem>
+        </Link>
+        <Divider />
         {currentUser && (
           <Link href={"/my-account"}>
             <MenuItem onClick={() => handleClose()}>
