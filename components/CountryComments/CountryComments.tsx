@@ -17,8 +17,7 @@ export function CountryComments({
   useEffect(() => {
     getDocument(router, setComments);
     setHasNewComment(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasNewComment, comments]);
+  }, [hasNewComment, router, setHasNewComment]);
 
   return (
     <>
