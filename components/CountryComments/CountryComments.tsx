@@ -17,7 +17,8 @@ export function CountryComments({
   useEffect(() => {
     getDocument(router, setComments);
     setHasNewComment(false);
-  }, [hasNewComment, router, setHasNewComment]);
+  }, [hasNewComment, router, setHasNewComment, comments?.length]);
+  console.log(comments);
 
   return (
     <>
