@@ -52,7 +52,7 @@ export default function MyAccount() {
 
   useEffect(() => {
     requestToServer();
-  }, [currentUser?.uid, isModalOpen, requestToServer]);
+  }, [requestToServer, currentUser?.uid]);
 
   const handleDelete = async () => {
     await deleteDoc(
@@ -68,6 +68,7 @@ export default function MyAccount() {
       )
     );
     setIsModalOpen(false);
+    requestToServer();
   };
 
   const handleUpdate = async () => {
@@ -89,6 +90,7 @@ export default function MyAccount() {
         comment: editedComment,
       }
     );
+    requestToServer();
   };
   if (!currentUser) {
     return (
