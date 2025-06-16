@@ -60,7 +60,7 @@ export function CountryCard({
             <Link href={`/${singleData.cca3}`}>
               <Card sx={{ border: "1px solid #dcdcdc" }}>
                 <CardHeader
-                  title={singleData.name.common}
+                  title={`${singleData.name.common} ${singleData.flag}`}
                   subheader={`(${singleData.name.official})`}
                   sx={{ backgroundColor: "#f5f5f5" }}
                 />

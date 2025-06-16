@@ -30,7 +30,9 @@ export default Home;
 Home.getLayout = getLayoutDefault;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch("https://restcountries.com/v3.1/all");
+  const res = await fetch(
+    "https://restcountries.com/v3.1/all?fields=name,cca3,capital,languages,population,region,flag"
+  );
   const data: ICountryData[] = await res.json();
   data.sort((a, b) => a.name.common.localeCompare(b.name.common));
 

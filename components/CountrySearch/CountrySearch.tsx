@@ -10,7 +10,7 @@ export function CountrySearch() {
     useGlobalContext();
   const [allCountries, setAllCountries] = useState<IConfiguredData[]>();
   const getAllCountries = async () => {
-    const res = await fetch("https://restcountries.com/v3.1/all");
+    const res = await fetch("https://restcountries.com/v3.1/all?fields=name,cca3");
     const data: ICountryData[] = await res.json();
     data.sort((a, b) => a.name.common.localeCompare(b.name.common));
     const configuredData = data.map((item) => ({
